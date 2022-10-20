@@ -26,9 +26,10 @@ DROP TABLE IF EXISTS `image`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `image` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Link` varchar(30) DEFAULT NULL,
-  `Alt` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Link` varchar(30) NOT NULL,
+  `Alt` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Link` (`Link`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,13 +52,15 @@ DROP TABLE IF EXISTS `product`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Title` varchar(30) DEFAULT NULL,
-  `Short_description` varchar(300) DEFAULT NULL,
-  `Is_active` tinyint(1) DEFAULT NULL,
-  `Old_price` double DEFAULT NULL,
-  `Current_price` double DEFAULT NULL,
-  `Promo_price` double DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Title` varchar(30) NOT NULL,
+  `Short_description` varchar(300) NOT NULL,
+  `Is_active` tinyint(1) NOT NULL,
+  `Old_price` double NOT NULL,
+  `Current_price` double NOT NULL,
+  `Promo_price` double NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Title` (`Title`),
+  UNIQUE KEY `Title_2` (`Title`,`Short_description`,`Is_active`,`Old_price`,`Current_price`,`Promo_price`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,7 +70,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Кросовки Adidas','Очень хорошие кросовки Adidas',1,10000,9000,8000),(2,'Кросовки Nike','Очень хорошие кросовки Nike',1,10000,9000,8000),(3,'Кросовки Puma','Очень хорошие кросовки Puma',1,10000,9000,8000),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',1,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',1,1100,1000,900),(10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000);
+INSERT INTO `product` VALUES (10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000),(1,'Кросовки Adidas','Очень хорошие кросовки Adidas',1,10000,9000,8000),(2,'Кросовки Nike','Очень хорошие кросовки Nike',1,10000,9000,8000),(3,'Кросовки Puma','Очень хорошие кросовки Puma',1,10000,9000,8000),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',1,1100,1000,900),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',1,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,10 +83,10 @@ DROP TABLE IF EXISTS `product_image_additional`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_image_additional` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Product_id` int DEFAULT NULL,
-  `Image_id` int DEFAULT NULL,
+  `Product_id` int NOT NULL,
+  `Image_id` int NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Product_id` (`Product_id`),
+  UNIQUE KEY `Product_id` (`Product_id`,`Image_id`),
   KEY `Image_id` (`Image_id`),
   CONSTRAINT `product_image_additional_ibfk_1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`),
   CONSTRAINT `product_image_additional_ibfk_2` FOREIGN KEY (`Image_id`) REFERENCES `image` (`Id`)
@@ -109,10 +112,12 @@ DROP TABLE IF EXISTS `product_image_main`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product_image_main` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Product_id` int DEFAULT NULL,
-  `Image_id` int DEFAULT NULL,
+  `Product_id` int NOT NULL,
+  `Image_id` int NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Product_id` (`Product_id`),
+  UNIQUE KEY `Product_id_2` (`Product_id`,`Image_id`),
+  UNIQUE KEY `Product_id_3` (`Product_id`),
   KEY `Image_id` (`Image_id`),
   CONSTRAINT `product_image_main_ibfk_1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`),
   CONSTRAINT `product_image_main_ibfk_2` FOREIGN KEY (`Image_id`) REFERENCES `image` (`Id`)
@@ -138,9 +143,11 @@ DROP TABLE IF EXISTS `section`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `section` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Title` varchar(30) DEFAULT NULL,
-  `Short_description` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Title` varchar(30) NOT NULL,
+  `Short_description` varchar(300) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Title` (`Title`),
+  UNIQUE KEY `Title_2` (`Title`,`Short_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -150,7 +157,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,'Adidas','Очень хорошие вещи Adidas'),(2,'Nike','Очень хорошие вещи Nike'),(3,'Puma','Очень хорошие вещи Puma'),(4,'Кроссовки','Очень хорошие кроссовки'),(5,'Шорты','Очень хорошие шорты'),(6,'Футболки','Очень хорошие футболки'),(7,'Ветровки','Очень хорошие ветровки');
+INSERT INTO `section` VALUES (1,'Adidas','Очень хорошие вещи Adidas'),(2,'Nike','Очень хорошие вещи Nike'),(3,'Puma','Очень хорошие вещи Puma'),(7,'Ветровки','Очень хорошие ветровки'),(4,'Кроссовки','Очень хорошие кроссовки'),(6,'Футболки','Очень хорошие футболки'),(5,'Шорты','Очень хорошие шорты');
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,10 +170,10 @@ DROP TABLE IF EXISTS `section_product_additional`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `section_product_additional` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Section_id` int DEFAULT NULL,
-  `Product_id` int DEFAULT NULL,
+  `Section_id` int NOT NULL,
+  `Product_id` int NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Section_id` (`Section_id`),
+  UNIQUE KEY `Section_id` (`Section_id`,`Product_id`),
   KEY `Product_id` (`Product_id`),
   CONSTRAINT `section_product_additional_ibfk_1` FOREIGN KEY (`Section_id`) REFERENCES `section` (`Id`),
   CONSTRAINT `section_product_additional_ibfk_2` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`)
@@ -192,11 +199,12 @@ DROP TABLE IF EXISTS `section_product_main`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `section_product_main` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Section_id` int DEFAULT NULL,
-  `Product_id` int DEFAULT NULL,
+  `Section_id` int NOT NULL,
+  `Product_id` int NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Product_id` (`Product_id`),
-  KEY `Section_id` (`Section_id`),
+  UNIQUE KEY `Section_id` (`Section_id`,`Product_id`),
+  UNIQUE KEY `Product_id_2` (`Product_id`),
   CONSTRAINT `section_product_main_ibfk_1` FOREIGN KEY (`Section_id`) REFERENCES `section` (`Id`),
   CONSTRAINT `section_product_main_ibfk_2` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -208,7 +216,7 @@ CREATE TABLE `section_product_main` (
 
 LOCK TABLES `section_product_main` WRITE;
 /*!40000 ALTER TABLE `section_product_main` DISABLE KEYS */;
-INSERT INTO `section_product_main` VALUES (1,2,1),(2,2,2),(3,3,3),(4,1,4),(5,2,5),(6,3,6),(7,1,7),(8,2,8),(9,3,9),(10,1,10),(11,2,11),(12,3,12);
+INSERT INTO `section_product_main` VALUES (4,1,4),(7,1,7),(10,1,10),(1,2,1),(2,2,2),(5,2,5),(8,2,8),(11,2,11),(3,3,3),(6,3,6),(9,3,9),(12,3,12);
 /*!40000 ALTER TABLE `section_product_main` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -221,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-20 10:31:17
+-- Dump completed on 2022-10-20 16:56:07
