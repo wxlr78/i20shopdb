@@ -1,0 +1,76 @@
+use i20shopdb;
+
+-- 1. страница каталога
+select
+s.id as section_id,
+s.title as section_title,
+sum(product.is_active) as product_count
+from
+section as s
+	inner join (
+		select section_id, product_id
+		from section_product_main
+		union
+		select section_id, product_id
+		from section_product_additional
+	) as section_product
+	on s.id = section_product.section_id
+	inner join product
+	on section_product.product_id = product.id
+	and product.is_active
+group by s.id
+order by product_count desc;
+
+-- 2. страница раздела
+select
+p.id as product_id,
+s.title as section_title,
+p.title as product_title,
+i.link as product_image,
+i.alt as product_alt
+from section_product_main as spm
+	inner join section as s
+	on spm.section_id = s.id
+	inner join product as p
+	on spm.product_id = p.id
+	and p.is_active
+	inner join product_image_main as pim
+	on spm.product_id = pim.product_id
+	inner join image as i
+	on pim.product_id = i.id
+where section_id = 1;
+
+-- 3. страница товара
+-- 3.1 основная информация
+select
+p.title as product_title,
+s.title as product_main_section,
+i.link as product_main_image,
+i.alt as product_main_alt,
+p.current_price as product_price,
+p.old_price as product_old_price,
+p.promo_price as product_promo_price,
+p.short_description as product_short_description
+from product as p
+	inner join product_image_main as pim join image as i
+    on p.id = pim.product_id and pim.image_id = i.id
+    inner join section_product_main as spm join section as s
+    on p.id = spm.product_id and spm.section_id = s.id
+where p.id = 4;
+
+-- 3.2 дополнительные разделы
+select
+s.title as product_additional_section
+from section_product_additional as spa
+	inner join section as s
+    on spa.section_id = s.id
+where spa.product_id = 4;
+
+-- 3.3 дополнительные картинки
+select
+i.link as product_additional_image,
+i.alt as product_additional_alt
+from product_image_additional as pia
+	inner join image as i
+    on pia.image_id = i.id
+where pia.product_id = 4;

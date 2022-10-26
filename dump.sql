@@ -70,7 +70,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000),(1,'Кросовки Adidas','Очень хорошие кросовки Adidas',1,10000,9000,8000),(2,'Кросовки Nike','Очень хорошие кросовки Nike',1,10000,9000,8000),(3,'Кросовки Puma','Очень хорошие кросовки Puma',1,10000,9000,8000),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',1,1100,1000,900),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',1,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800);
+INSERT INTO `product` VALUES (10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000),(1,'Кросовки Adidas','Очень хорошие кросовки Adidas',0,10000,9000,8000),(2,'Кросовки Nike','Очень хорошие кросовки Nike',1,10000,9000,8000),(3,'Кросовки Puma','Очень хорошие кросовки Puma',1,10000,9000,8000),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',1,1100,1000,900),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',1,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +148,7 @@ CREATE TABLE `section` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Title` (`Title`),
   UNIQUE KEY `Title_2` (`Title`,`Short_description`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +157,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,'Adidas','Очень хорошие вещи Adidas'),(2,'Nike','Очень хорошие вещи Nike'),(3,'Puma','Очень хорошие вещи Puma'),(7,'Ветровки','Очень хорошие ветровки'),(4,'Кроссовки','Очень хорошие кроссовки'),(6,'Футболки','Очень хорошие футболки'),(5,'Шорты','Очень хорошие шорты');
+INSERT INTO `section` VALUES (1,'Adidas','Очень хорошие вещи Adidas'),(2,'Nike','Очень хорошие вещи Nike'),(3,'Puma','Очень хорошие вещи Puma'),(7,'Ветровки','Очень хорошие ветровки'),(4,'Кроссовки','Очень хорошие кроссовки'),(8,'Пустая категория','Пустая категория'),(6,'Футболки','Очень хорошие футболки'),(5,'Шорты','Очень хорошие шорты');
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `section_product_additional` (
   KEY `Product_id` (`Product_id`),
   CONSTRAINT `section_product_additional_ibfk_1` FOREIGN KEY (`Section_id`) REFERENCES `section` (`Id`),
   CONSTRAINT `section_product_additional_ibfk_2` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `section_product_additional` (
 
 LOCK TABLES `section_product_additional` WRITE;
 /*!40000 ALTER TABLE `section_product_additional` DISABLE KEYS */;
-INSERT INTO `section_product_additional` VALUES (1,2,1),(2,4,2),(3,4,3),(4,5,4),(5,5,5),(6,5,6),(7,6,7),(8,6,8),(9,6,9),(10,7,10),(11,7,11),(12,7,12);
+INSERT INTO `section_product_additional` VALUES (5,1,4),(1,2,1),(6,2,4),(7,3,4),(2,4,2),(3,4,3),(4,5,4),(8,5,5),(9,5,6),(10,6,7),(11,6,8),(12,6,9),(13,7,10),(14,7,11),(15,7,12);
 /*!40000 ALTER TABLE `section_product_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-20 16:56:07
+-- Dump completed on 2022-10-27  1:26:07
