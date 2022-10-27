@@ -28,14 +28,20 @@ s.title as section_title,
 p.title as product_title,
 i.link as product_image,
 i.alt as product_alt
-from section_product_main as spm
+from (
+		select section_id, product_id
+		from section_product_main
+		union
+		select section_id, product_id
+		from section_product_additional
+	) as section_product
 	inner join section as s
-	on spm.section_id = s.id
+	on section_product.section_id = s.id
 	inner join product as p
-	on spm.product_id = p.id
+	on section_product.product_id = p.id
 	and p.is_active
 	inner join product_image_main as pim
-	on spm.product_id = pim.product_id
+	on section_product.product_id = pim.product_id
 	inner join image as i
 	on pim.product_id = i.id
 where section_id = 1;
@@ -52,10 +58,14 @@ p.old_price as product_old_price,
 p.promo_price as product_promo_price,
 p.short_description as product_short_description
 from product as p
-	inner join product_image_main as pim join image as i
-    on p.id = pim.product_id and pim.image_id = i.id
-    inner join section_product_main as spm join section as s
-    on p.id = spm.product_id and spm.section_id = s.id
+	inner join product_image_main as pim
+    join image as i
+    on p.id = pim.product_id
+    and pim.image_id = i.id
+    inner join section_product_main as spm
+    join section as s
+    on p.id = spm.product_id
+    and spm.section_id = s.id
 where p.id = 4;
 
 -- 3.2 дополнительные разделы
@@ -74,3 +84,47 @@ from product_image_additional as pia
 	inner join image as i
     on pia.image_id = i.id
 where pia.product_id = 4;
+
+-- 4 дополнительные запросы
+-- 4.1 все разделы
+select
+s.id as section_id,
+s.title as section_title,
+count(product.is_active) as product_count
+from
+section as s
+left join (
+		select section_id, product_id
+		from section_product_main
+		union
+		select section_id, product_id
+		from section_product_additional
+	) as section_product
+    on s.id = section_product.section_id
+    left join product
+	on section_product.product_id = product.id
+	and product.is_active
+group by s.id
+order by product_count desc;
+
+-- 4.2 разделы, с количеством товаров больше, либо равно двум
+select
+s.id as section_id,
+s.title as section_title,
+sum(product.is_active) as product_count
+from
+section as s
+	inner join (
+		select section_id, product_id
+		from section_product_main
+		union
+		select section_id, product_id
+		from section_product_additional
+	) as section_product
+	on s.id = section_product.section_id
+	inner join product
+	on section_product.product_id = product.id
+	and product.is_active
+group by s.id
+having product_count >= 2
+order by product_count desc;
