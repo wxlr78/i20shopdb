@@ -35,16 +35,18 @@ from (
 		select section_id, product_id
 		from section_product_additional
 	) as section_product
-	inner join section as s
-	on section_product.section_id = s.id
-	inner join product as p
+    inner join product as p
 	on section_product.product_id = p.id
 	and p.is_active
-	inner join product_image_main as pim
+    inner join section_product_main as spm
+    on p.id = spm.product_id
+    inner join section as s
+    on spm.section_id = s.id
+    inner join product_image_main as pim
 	on section_product.product_id = pim.product_id
 	inner join image as i
 	on pim.product_id = i.id
-where section_id = 1;
+where section_product.section_id = 2;
 
 -- 3. страница товара
 -- 3.1 основная информация
