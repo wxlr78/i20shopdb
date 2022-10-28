@@ -39,7 +39,7 @@ CREATE TABLE `image` (
 
 LOCK TABLES `image` WRITE;
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
-INSERT INTO `image` VALUES (1,'sneakersAdidasAnn.jpg','Кросовки Adidas анонс'),(2,'sneakersNikeAnn.jpg','Кросовки Nike анонс'),(3,'sneakersPumaAnn.jpg','Кросовки Puma анонс'),(4,'shortsAdidasAnn.jpg','Шорты Adidas анонс'),(5,'shortsNikeAnn.jpg','Шорты Nike анонс'),(6,'shortsPumaAnn.jpg','Шорты Puma анонс'),(7,'shirtAdidasAnn.jpg','Футболка Adidas анонс'),(8,'shirtNikeAnn.jpg','Футболка Nike анонс'),(9,'shirtPumaAnn.jpg','Футболка Puma анонс'),(10,'windbreakerAdidasAnn.jpg','Ветровка Adidas анонс'),(11,'windbreakerNikeAnn.jpg','Ветровка Nike анонс'),(12,'windbreakerPumaAnn.jpg','Ветровка Puma анонс'),(13,'sneakersAdidasAdd.jpg','Кросовки Adidas доп'),(14,'sneakersNikeAdd.jpg','Кросовки Nike доп'),(15,'sneakersPumaAdd.jpg','Кросовки Puma доп'),(16,'shortsAdidasAdd.jpg','Шорты Adidas доп'),(17,'shortsNikeAdd.jpg','Шорты Nike доп'),(18,'shortsPumaAdd.jpg','Шорты Puma доп'),(19,'shirtAdidasAdd.jpg','Футболка Adidas доп'),(20,'shirtNikeAdd.jpg','Футболка Nike доп'),(21,'shirtPumaAdd.jpg','Футболка Puma доп'),(22,'windbreakerAdidasAdd.jpg','Ветровка Adidas доп'),(23,'windbreakerNikeAdd.jpg','Ветровка Nike доп'),(24,'windbreakerPumaAdd.jpg','Ветровка Puma доп');
+INSERT INTO `image` VALUES (1,'sneakersAdidasAnn.jpg','Кроссовки Adidas анонс'),(2,'sneakersNikeAnn.jpg','Кроссовки Nike анонс'),(3,'sneakersPumaAnn.jpg','Кроссовки Puma анонс'),(4,'shortsAdidasAnn.jpg','Шорты Adidas анонс'),(5,'shortsNikeAnn.jpg','Шорты Nike анонс'),(6,'shortsPumaAnn.jpg','Шорты Puma анонс'),(7,'shirtAdidasAnn.jpg','Футболка Adidas анонс'),(8,'shirtNikeAnn.jpg','Футболка Nike анонс'),(9,'shirtPumaAnn.jpg','Футболка Puma анонс'),(10,'windbreakerAdidasAnn.jpg','Ветровка Adidas анонс'),(11,'windbreakerNikeAnn.jpg','Ветровка Nike анонс'),(12,'windbreakerPumaAnn.jpg','Ветровка Puma анонс'),(13,'sneakersAdidasAdd.jpg','Кроссовки Adidas доп'),(14,'sneakersNikeAdd.jpg','Кроссовки Nike доп'),(15,'sneakersPumaAdd.jpg','Кроссовки Puma доп'),(16,'shortsAdidasAdd.jpg','Шорты Adidas доп'),(17,'shortsNikeAdd.jpg','Шорты Nike доп'),(18,'shortsPumaAdd.jpg','Шорты Puma доп'),(19,'shirtAdidasAdd.jpg','Футболка Adidas доп'),(20,'shirtNikeAdd.jpg','Футболка Nike доп'),(21,'shirtPumaAdd.jpg','Футболка Puma доп'),(22,'windbreakerAdidasAdd.jpg','Ветровка Adidas доп'),(23,'windbreakerNikeAdd.jpg','Ветровка Nike доп'),(24,'windbreakerPumaAdd.jpg','Ветровка Puma доп');
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Title` (`Title`),
   UNIQUE KEY `Title_2` (`Title`,`Short_description`,`Is_active`,`Old_price`,`Current_price`,`Promo_price`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000),(1,'Кросовки Adidas','Очень хорошие кросовки Adidas',0,10000,9000,8000),(2,'Кросовки Nike','Очень хорошие кросовки Nike',1,10000,9000,8000),(3,'Кросовки Puma','Очень хорошие кросовки Puma',1,10000,9000,8000),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',1,1100,1000,900),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',1,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800);
+INSERT INTO `product` VALUES (10,'Ветровка Adidas','Очень хорошая ветровка Adidas',1,1200,1100,1000),(11,'Ветровка Nike','Очень хорошая ветровка Nike',1,1200,1100,1000),(12,'Ветровка Puma','Очень хорошая ветровка Puma',1,1200,1100,1000),(16,'Ветровка2 Nike','Очень хорошая ветровка2 Nike',1,1200,1100,1000),(20,'Ветровка3 Nike','Очень хорошая ветровка3 Nike',1,1200,1100,1000),(24,'Ветровка4 Nike','Очень хорошая ветровка4 Nike',1,1200,1100,1000),(28,'Ветровка5 Nike','Очень хорошая ветровка5 Nike',1,1200,1100,1000),(1,'Кроссовки Adidas','Очень хорошие кроссовки Adidas',0,10000,9000,8000),(2,'Кроссовки Nike','Очень хорошие кроссовки Nike',1,10000,9000,8000),(3,'Кроссовки Puma','Очень хорошие кроссовки Puma',1,10000,9000,8000),(13,'Кроссовки2 Nike','Очень хорошие кроссовки2 Nike',1,10000,9000,8000),(17,'Кроссовки3 Nike','Очень хорошие кроссовки3 Nike',1,10000,9000,8000),(21,'Кроссовки4 Nike','Очень хорошие кроссовки4 Nike',1,10000,9000,8000),(25,'Кроссовки5 Nike','Очень хорошие кроссовки5 Nike',1,10000,9000,8000),(7,'Футболка Adidas','Очень хорошая футболка Adidas',1,1100,1000,900),(8,'Футболка Nike','Очень хорошая футболка Nike',1,1100,1000,900),(9,'Футболка Puma','Очень хорошая футболка Puma',0,1100,1000,900),(15,'Футболка2 Nike','Очень хорошая футболка2 Nike',1,1100,1000,900),(19,'Футболка3 Nike','Очень хорошая футболка3 Nike',1,1100,1000,900),(23,'Футболка4 Nike','Очень хорошая футболка4 Nike',1,1100,1000,900),(27,'Футболка5 Nike','Очень хорошая футболка5 Nike',1,1100,1000,900),(4,'Шорты Adidas','Очень хорошие шорты Adidas',1,1000,900,800),(5,'Шорты Nike','Очень хорошие шорты Nike',0,1000,900,800),(6,'Шорты Puma','Очень хорошие шорты Puma',1,1000,900,800),(14,'Шорты2 Nike','Очень хорошие шорты2 Nike',1,1000,900,800),(18,'Шорты3 Nike','Очень хорошие шорты3 Nike',1,1000,900,800),(22,'Шорты4 Nike','Очень хорошие шорты4 Nike',1,1000,900,800),(26,'Шорты5 Nike','Очень хорошие шорты5 Nike',1,1000,900,800);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `product_image_additional` (
   KEY `Image_id` (`Image_id`),
   CONSTRAINT `product_image_additional_ibfk_1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`),
   CONSTRAINT `product_image_additional_ibfk_2` FOREIGN KEY (`Image_id`) REFERENCES `image` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `product_image_additional` (
 
 LOCK TABLES `product_image_additional` WRITE;
 /*!40000 ALTER TABLE `product_image_additional` DISABLE KEYS */;
-INSERT INTO `product_image_additional` VALUES (1,1,2),(2,2,14),(3,3,15),(4,4,16),(5,5,17),(6,6,18),(7,7,19),(8,8,20),(9,9,21),(10,10,22),(11,11,23),(12,12,24);
+INSERT INTO `product_image_additional` VALUES (1,1,13),(2,2,14),(3,3,15),(4,4,16),(5,5,17),(6,6,18),(7,7,19),(8,8,20),(9,9,21),(10,10,22),(11,11,23),(12,12,24),(13,13,14),(14,14,17),(15,15,20),(16,16,23),(17,17,14),(18,18,17),(19,19,20),(20,20,23),(21,21,14),(22,22,17),(23,23,20),(24,24,23),(25,25,14),(26,26,17),(27,27,20),(28,28,23);
 /*!40000 ALTER TABLE `product_image_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `product_image_main` (
   KEY `Image_id` (`Image_id`),
   CONSTRAINT `product_image_main_ibfk_1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`),
   CONSTRAINT `product_image_main_ibfk_2` FOREIGN KEY (`Image_id`) REFERENCES `image` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `product_image_main` (
 
 LOCK TABLES `product_image_main` WRITE;
 /*!40000 ALTER TABLE `product_image_main` DISABLE KEYS */;
-INSERT INTO `product_image_main` VALUES (1,1,2),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,6,6),(7,7,7),(8,8,8),(9,9,9),(10,10,10),(11,11,11),(12,12,12);
+INSERT INTO `product_image_main` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,6,6),(7,7,7),(8,8,8),(9,9,9),(10,10,10),(11,11,11),(12,12,12),(13,13,2),(14,14,5),(15,15,8),(16,16,11),(17,17,2),(18,18,5),(19,19,8),(20,20,11),(21,21,2),(22,22,5),(23,23,8),(24,24,11),(25,25,2),(26,26,5),(27,27,8),(28,28,11);
 /*!40000 ALTER TABLE `product_image_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `section_product_additional` (
   KEY `Product_id` (`Product_id`),
   CONSTRAINT `section_product_additional_ibfk_1` FOREIGN KEY (`Section_id`) REFERENCES `section` (`Id`),
   CONSTRAINT `section_product_additional_ibfk_2` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `section_product_additional` (
 
 LOCK TABLES `section_product_additional` WRITE;
 /*!40000 ALTER TABLE `section_product_additional` DISABLE KEYS */;
-INSERT INTO `section_product_additional` VALUES (5,1,4),(1,2,1),(6,2,4),(7,3,4),(2,4,2),(3,4,3),(4,5,4),(8,5,5),(9,5,6),(10,6,7),(11,6,8),(12,6,9),(13,7,10),(14,7,11),(15,7,12);
+INSERT INTO `section_product_additional` VALUES (1,4,1),(2,4,2),(3,4,3),(13,4,13),(17,4,17),(21,4,21),(25,4,25),(4,5,4),(5,5,5),(6,5,6),(14,5,14),(18,5,18),(22,5,22),(26,5,26),(7,6,7),(8,6,8),(9,6,9),(15,6,15),(19,6,19),(23,6,23),(27,6,27),(10,7,10),(11,7,11),(12,7,12),(16,7,16),(20,7,20),(24,7,24),(28,7,28);
 /*!40000 ALTER TABLE `section_product_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +207,7 @@ CREATE TABLE `section_product_main` (
   UNIQUE KEY `Product_id_2` (`Product_id`),
   CONSTRAINT `section_product_main_ibfk_1` FOREIGN KEY (`Section_id`) REFERENCES `section` (`Id`),
   CONSTRAINT `section_product_main_ibfk_2` FOREIGN KEY (`Product_id`) REFERENCES `product` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `section_product_main` (
 
 LOCK TABLES `section_product_main` WRITE;
 /*!40000 ALTER TABLE `section_product_main` DISABLE KEYS */;
-INSERT INTO `section_product_main` VALUES (4,1,4),(7,1,7),(10,1,10),(1,2,1),(2,2,2),(5,2,5),(8,2,8),(11,2,11),(3,3,3),(6,3,6),(9,3,9),(12,3,12);
+INSERT INTO `section_product_main` VALUES (1,1,1),(4,1,4),(7,1,7),(10,1,10),(2,2,2),(5,2,5),(8,2,8),(11,2,11),(13,2,13),(14,2,14),(15,2,15),(16,2,16),(17,2,17),(18,2,18),(19,2,19),(20,2,20),(21,2,21),(22,2,22),(23,2,23),(24,2,24),(25,2,25),(26,2,26),(27,2,27),(28,2,28),(3,3,3),(6,3,6),(9,3,9),(12,3,12);
 /*!40000 ALTER TABLE `section_product_main` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -229,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-27  1:26:07
+-- Dump completed on 2022-10-29  0:21:37

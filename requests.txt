@@ -45,13 +45,14 @@ from (
     inner join product_image_main as pim
 	on section_product.product_id = pim.product_id
 	inner join image as i
-	on pim.product_id = i.id
+	on pim.image_id = i.id
 where section_product.section_id = 2;
 
 -- 3. страница товара
 -- 3.1 основная информация
 select
 p.title as product_title,
+s.id as product_main_section_id,
 s.title as product_main_section,
 i.link as product_main_image,
 i.alt as product_main_alt,
@@ -68,15 +69,16 @@ from product as p
     join section as s
     on p.id = spm.product_id
     and spm.section_id = s.id
-where p.id = 4;
+where p.id = 28;
 
 -- 3.2 дополнительные разделы
 select
+s.id as product_additional_section_id,
 s.title as product_additional_section
 from section_product_additional as spa
 	inner join section as s
     on spa.section_id = s.id
-where spa.product_id = 4;
+where spa.product_id = 28;
 
 -- 3.3 дополнительные картинки
 select
@@ -85,7 +87,7 @@ i.alt as product_additional_alt
 from product_image_additional as pia
 	inner join image as i
     on pia.image_id = i.id
-where pia.product_id = 4;
+where pia.product_id = 28;
 
 -- 4 дополнительные запросы
 -- 4.1 все разделы
